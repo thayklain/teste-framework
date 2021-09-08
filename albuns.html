@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+
+    <meta charset="UTF-8">
+    <title>Albuns</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+    </style>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/albums')
+            .then((response) => response.json())
+            .then((json) => fillTable(json));
+
+        function fillTable(json) {
+            const table = document.getElementById("albumsTable");
+
+            json.forEach(item => {
+                var row = table.insertRow();
+
+                var user = row.insertCell(0);
+                var title = row.insertCell(1);
+
+                user.innerHTML = item.userId;
+                title.innerHTML = item.title;
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Álbuns</h1>
+    <table id="albumsTable">
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Título</th>
+            </tr>
+        </thead>
+        <tbody id="albumsContent"></tbody>
+    </table>
+    <button onclick="window.location.href='index.html'">Retornar ao menu principal</button>
+</body>
+
+</html>
